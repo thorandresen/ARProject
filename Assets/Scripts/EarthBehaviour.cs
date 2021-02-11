@@ -13,6 +13,7 @@ public class EarthBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        transform.RotateAround(GameObject.Find("Sun").transform.position, new Vector3(0, 1, 0), 50 * Time.deltaTime);
         transform.Rotate(0, 1, 0);
     }
 }
