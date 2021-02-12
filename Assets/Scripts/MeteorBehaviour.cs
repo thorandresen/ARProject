@@ -36,6 +36,7 @@ public class MeteorBehaviour : MonoBehaviour
     {
         if (collision.gameObject.tag == "Earth")
         {
+            
             Debug.Log("Collision!!");
             Explode();
         }
