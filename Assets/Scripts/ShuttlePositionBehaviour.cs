@@ -22,7 +22,7 @@ public class ShuttlePositionBehaviour : MonoBehaviour
         invMat = field.transform.worldToLocalMatrix.MultiplyPoint(new Vector3(mat.m03, mat.m13, mat.m23));
 
         // Bounding box.
-        if((invMat.x < 0f && invMat.x > -2f) && (invMat.y < 0f && invMat.y > -4f) && (invMat.z < 4f && invMat.z > 0f))
+        if((invMat.x > -1f && invMat.x < 1f) && (invMat.y < -0.5f && invMat.y > -2f) && (invMat.z > -1f && invMat.z < 1f))
         {
             text = "Prepare to land";
         } else

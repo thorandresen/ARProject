@@ -20,11 +20,13 @@ public class FalconBehavior : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            frontCannotRight.transform.rotation = Quaternion.AngleAxis(-45, frontCannotRight.transform.parent.forward);
-            DrawLine(frontCannotRight.transform.position, Vector3.Scale(frontCannotRight.transform.position, frontCannotRight.transform.parent.forward)*2);
+        
+            var cannonPos = frontCannotRight.transform.position;
+            var newPos = cannonPos + (frontCannotRight.transform.parent.forward * 2);
 
-            DrawLine(frontCannotLeft.transform.position, Vector3.Scale(frontCannotLeft.transform.position, frontCannotLeft.transform.forward) * 2);
-            //DrawLine(frontCannotMiddle.transform.position, frontCannotMiddle.transform.parent.forward);
+            DrawLine(cannonPos, newPos);
+            DrawLine(frontCannotLeft.transform.position, frontCannotLeft.transform.position + (frontCannotLeft.transform.parent.forward * 2));
+            DrawLine(frontCannotMiddle.transform.position, frontCannotMiddle.transform.position + (frontCannotMiddle.transform.parent.forward * 2));
 
             RaycastHit hit;
             if (Physics.Raycast(frontCannotRight.transform.position, frontCannotRight.transform.parent.forward,out hit))
