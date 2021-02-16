@@ -18,22 +18,39 @@ public class RotationBehaviour : MonoBehaviour
     private Matrix4x4 moonMatrix;
     float i = 0;
     float j = 0;
+    float k = 0;
 
     // Start is called before the first frame update
     void Start()
     {
+        
         sunMatrix = T(0, 1, 0);
         sun.transform.position = sunMatrix.GetColumn(3);
         earthMatrix = sunMatrix;
+        
 
     }
 
     // Update is called once per frame
     void Update()
     {
+        SelfRotate();
+        ElipseRotations();
+    }
+
+    void SelfRotate() { 
+        // Rotate around y
+        sun.transform.rotation = Quaternion.Euler(Ry(1).GetColumn(1) * k);
+        earth.transform.rotation = Quaternion.Euler(Ry(1).GetColumn(1) * k);
+        moon.transform.rotation = Quaternion.Euler(Ry(1).GetColumn(1) * k);
+
+        k += Time.deltaTime * 50;
+    }
+
+    void ElipseRotations() {
         earthMatrix = sunMatrix;
-        earthMatrix = earthMatrix * S(2,0,4) * Ry((int) i * Mathf.Deg2Rad) * T(1, 0, 0);
-        moonMatrix = T(earthMatrix.m03, earthMatrix.m13, earthMatrix.m23) * Ry((int) j * Mathf.Deg2Rad) * T(1, 0, 0);
+        earthMatrix = earthMatrix * S(2, 0, 4) * Ry((int)i * Mathf.Deg2Rad) * T(1, 0, 0);
+        moonMatrix = T(earthMatrix.m03, earthMatrix.m13, earthMatrix.m23) * Ry((int)j * Mathf.Deg2Rad) * T(1, 0, 0);
         earth.transform.position = earthMatrix.GetColumn(3);
         moon.transform.position = moonMatrix.GetColumn(3);
         i += Time.deltaTime * 50;
