@@ -5,7 +5,9 @@ using UnityEngine;
 public class ShuttleBehaviour : MonoBehaviour
 {
     Renderer color;
-    [SerializeField] private GameObject stripQuad; 
+    [SerializeField] private GameObject stripQuad;
+
+  
     // Start is called before the first frame update
     void Start()
     {
