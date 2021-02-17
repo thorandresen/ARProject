@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Harmonien : MonoBehaviour
+public class ShuttlePositionBehaviour : MonoBehaviour
 {
     [SerializeField] private GameObject field;
     private Vector3 invMat;
