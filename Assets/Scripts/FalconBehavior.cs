@@ -34,6 +34,16 @@ public class FalconBehavior : MonoBehaviour
                 Debug.Log(hit.collider.gameObject.name);
                 Destroy(hit.collider.gameObject);
             }
+            if (Physics.Raycast(frontCannotLeft.transform.position, frontCannotRight.transform.parent.forward, out hit))
+            {
+                Debug.Log(hit.collider.gameObject.name);
+                Destroy(hit.collider.gameObject);
+            }
+            if (Physics.Raycast(frontCannotMiddle.transform.position, frontCannotRight.transform.parent.forward, out hit))
+            {
+                Debug.Log(hit.collider.gameObject.name);
+                Destroy(hit.collider.gameObject);
+            }
         }
     }
 

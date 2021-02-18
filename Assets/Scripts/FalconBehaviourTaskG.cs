@@ -30,7 +30,7 @@ public class FalconBehaviourTaskG : MonoBehaviour
         // Calculate position and rotation of cannons.
         leftCannon = mat * RotationBehaviour.Rx(rotation.x) * RotationBehaviour.Ry(rotation.y) * RotationBehaviour.Rz(rotation.z) * RotationBehaviour.T(-0.11f, 0f, 0.658f);
         rightCannon = mat * RotationBehaviour.Rx(rotation.x) * RotationBehaviour.Ry(rotation.y) * RotationBehaviour.Rz(rotation.z) * RotationBehaviour.T(0.081f, 0f, 0.658f);
-        middleCannon = mat * RotationBehaviour.Rx(rotation.x) * RotationBehaviour.Ry(rotation.y) * RotationBehaviour.Rz(rotation.z) * RotationBehaviour.T(0f, 0.212f, -0.123f);
+        middleCannon = mat * RotationBehaviour.Rx(rotation.x) * RotationBehaviour.Ry(rotation.y) * RotationBehaviour.Rz(rotation.z) * RotationBehaviour.T(0f, 0.25f, -0.123f);
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
