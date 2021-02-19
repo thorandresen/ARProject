@@ -8,6 +8,9 @@ public class FalconBehaviourTaskG : MonoBehaviour
     Matrix4x4 rightCannon;
     Matrix4x4 middleCannon;
 
+    private int yaw;
+    private int pitch;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -30,7 +33,7 @@ public class FalconBehaviourTaskG : MonoBehaviour
         // Calculate position and rotation of cannons.
         leftCannon = mat * RotationBehaviour.Rx(rotation.x) * RotationBehaviour.Ry(rotation.y) * RotationBehaviour.Rz(rotation.z) * RotationBehaviour.T(-0.11f, 0f, 0.658f);
         rightCannon = mat * RotationBehaviour.Rx(rotation.x) * RotationBehaviour.Ry(rotation.y) * RotationBehaviour.Rz(rotation.z) * RotationBehaviour.T(0.081f, 0f, 0.658f);
-        middleCannon = mat * RotationBehaviour.Rx(rotation.x) * RotationBehaviour.Ry(rotation.y) * RotationBehaviour.Rz(rotation.z) * RotationBehaviour.T(0f, 0.25f, -0.123f);
+        middleCannon = mat  * RotationBehaviour.Rx(rotation.x) * RotationBehaviour.Ry(rotation.y) * RotationBehaviour.Rz(rotation.z) * RotationBehaviour.T(0f, 0.25f, -0.123f);
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -41,7 +44,24 @@ public class FalconBehaviourTaskG : MonoBehaviour
 
             DrawLine(leftCannon.GetColumn(3), leftCannonVec3 + (gameObject.transform.forward * 2));
             DrawLine(rightCannon.GetColumn(3), rightCannonVec3 + (gameObject.transform.forward * 2));
-            DrawLine(middleCannon.GetColumn(3), middleCannonVec3 + (gameObject.transform.forward * 2));
+            DrawLine(middleCannon.GetColumn(3), middleCannonVec3 + (new Vector3(yaw, pitch, 0) + gameObject.transform.forward * 2));
+        }
+
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            yaw++;
+        }
+        if (Input.GetKeyDown(KeyCode.RightArrow))
+        {
+            yaw--;
+        }
+        if (Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            pitch++;
+        }
+        if (Input.GetKeyDown(KeyCode.DownArrow))
+        {
+            pitch--;
         }
     }
 
