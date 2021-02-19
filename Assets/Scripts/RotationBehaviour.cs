@@ -38,6 +38,7 @@ public class RotationBehaviour : MonoBehaviour
         ElipseRotations();
     }
 
+    // Assignment B
     void SelfRotate() { 
         // Rotate around y
         sun.transform.rotation = Quaternion.Euler(Ry(1).GetColumn(1) * k);
@@ -47,6 +48,7 @@ public class RotationBehaviour : MonoBehaviour
         k += Time.deltaTime * 50;
     }
 
+    // Assignment A
     void ElipseRotations() {
         earthMatrix = sunMatrix;
         earthMatrix = earthMatrix * S(2, 0, 4) * Ry((int)i * Mathf.Deg2Rad) * T(1, 0, 0);
