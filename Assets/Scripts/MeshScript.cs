@@ -20,30 +20,31 @@ public class MeshScript : MonoBehaviour
 
         Mesh mesh = new Mesh();
 
-
-        Vector3[] vertices = new Vector3[17]
+        int x = 4;
+        int y = 6;
+    Vector3[] vertices = new Vector3[17]
         {
             //new Vector3(0, 0, 0),
             //new Vector3(width, 0, 0),
             //new Vector3(0, height, 0),
             //new Vector3(width, height, 0)
-            new Vector3(1,0,0),
-            new Vector3(0,4,0),
-            new Vector3(3,4,0),
-            new Vector3(3,1,-1),
-            new Vector3(1,7,0),
-            new Vector3(4,6,1),
-            new Vector3(2,9,0),
-            new Vector3(4,9,0),
-            new Vector3(3,12,0),
-            new Vector3(4,13,0),
-            new Vector3(5,12,0),
-            new Vector3(6,9,0),
-            new Vector3(7,7,0),
-            new Vector3(5,4,0),
-            new Vector3(8,4,0),
-            new Vector3(5,1,-1),
-            new Vector3(7,0,0),
+            new Vector3(1-x,0-y,0),
+            new Vector3(0-x,4-y,0),
+            new Vector3(3-x,4-y,0),
+            new Vector3(3-x,1-y,-1),
+            new Vector3(1-x,7-y,0),
+            new Vector3(4-x,6-y,1),
+            new Vector3(2-x,9-y,0),
+            new Vector3(4-x,9-y,0),
+            new Vector3(3-x,12-y,0),
+            new Vector3(4-x,13-y,0),
+            new Vector3(5-x,12-y,0),
+            new Vector3(6-x,9-y,0),
+            new Vector3(7-x,7-y,0),
+            new Vector3(5-x,4-y,0),
+            new Vector3(8-x,4-y,0),
+            new Vector3(5-x,1-y,-1),
+            new Vector3(7-x,0-y,0),
         };
         mesh.vertices = vertices;
 
