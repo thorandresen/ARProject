@@ -42,4 +42,6 @@ public class Assignment21c : MonoBehaviour
         transform.rotation *= Quaternion.Euler(90, 0, 0);
         transform.position = Vector3.Lerp(pos1, pos2, Mathf.PingPong(Time.time* speed, 1.0f));
      }
+
+    
 }

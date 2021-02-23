@@ -9,20 +9,23 @@ public class MeshScript : MonoBehaviour
     
     [SerializeField] private Material material;
 
-
+    private Vector3[] vertices;
+    private Mesh mesh;
+    private MeshFilter meshFilter;
+    private Color[] colors;
     public void Start()
     { 
         MeshRenderer meshRenderer = gameObject.AddComponent<MeshRenderer>();
         meshRenderer.sharedMaterial = material;
-        
 
-        MeshFilter meshFilter = gameObject.AddComponent<MeshFilter>();
 
-        Mesh mesh = new Mesh();
+        meshFilter = gameObject.AddComponent<MeshFilter>();
+
+        mesh = new Mesh();
 
         int x = 4;
         int y = 6;
-    Vector3[] vertices = new Vector3[17]
+        vertices = new Vector3[17]
         {
             //new Vector3(0, 0, 0),
             //new Vector3(width, 0, 0),
@@ -47,6 +50,9 @@ public class MeshScript : MonoBehaviour
             new Vector3(7-x,0-y,0),
         };
         mesh.vertices = vertices;
+
+        colors = new Color[vertices.Length];
+
 
         int[] tris = new int[48]
         {
@@ -115,5 +121,34 @@ public class MeshScript : MonoBehaviour
         //mesh.uv = uv;
 
         meshFilter.mesh = mesh;
+    }
+
+    float counter = 0f;
+
+    void Update()
+    {
+        vertices[0].z = Mathf.Sin(counter);
+        vertices[3].z = Mathf.Sin(counter);
+        vertices[15].z = Mathf.Sin(counter);
+        vertices[16].z = Mathf.Sin(counter);
+
+        counter += Time.deltaTime * 10;
+
+        mesh.vertices = vertices;
+        meshFilter.mesh = mesh;
+
+
+        if ((int)counter % 2 == 0)
+        {
+            for (int i = 0; i < vertices.Length; i++)
+                colors[i] = Color.Lerp(Color.red, Color.green, vertices[i].y);
+        }
+        else {
+            for (int i = 0; i < vertices.Length; i++)
+                colors[i] = Color.Lerp(Color.green, Color.red, vertices[i].y);
+        }
+        mesh.colors = colors;
+
+
     }
 }
